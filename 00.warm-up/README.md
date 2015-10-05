@@ -13,7 +13,7 @@ sudo apt-get install ipython3-notebook -y
 ``` bash
 echo 'alias python=python3' >> ~/.bashrc
 echo 'alias ipython=ipython3' >> ~/.bashrc
-echo 'alias pip=pip3 >> ~/.bashrc'
+echo 'alias pip=pip3' >> ~/.bashrc
 ```
 
 把下面的檔案存成 `run.py`
