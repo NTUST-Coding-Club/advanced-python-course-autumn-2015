@@ -5,7 +5,8 @@
 輸入以下指令到 Terminal 來安裝 IPython Notebook 環境
 
 ``` bash
-sudo apt-get install ipython3-notebook -y
+sudo apt-get install python3 python3-dev python3-pip ipython3-notebook -y
+sudo -H pip3 install -U 'ipython[notebook]'
 ```
 
 輸入以下指令讓你打 `python` 的時候預設執行 `python3`
