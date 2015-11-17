@@ -1,5 +1,5 @@
 class Human(object):
-    NAME = 'human'
+    NAME = 'human'  # class 的變數
     def __init__(self, name):
         print('A %s named %s' % (self.__class__.NAME, name))
         self.name = name
@@ -13,7 +13,8 @@ class Human(object):
 class Engineer(Human):
     NAME = 'engineer'
     def __init__(self, name):
-        super().__init__(name)
+        # super() <-- 可以想像成暫時把 class 變成 Human
+        super().__init__(name)  # Human 的 __init__
 
 class Coder(Engineer):
     NAME = 'coder'
@@ -37,3 +38,5 @@ rock.sleep('8 hours')
 print('-- Here is Inndy --')
 inndy = Coder('Inndy')
 inndy.sleep('1 day')
+
+print('\n' * 5)
