@@ -29,6 +29,10 @@ class Player(object):
             self.hp -= from_.power
             print('%s 被 %s 攻擊，損傷 %d' % (self, from_, from_.power))
 
+        if self.hp <= 0:
+            print('%s %s掛了！！！%s' % (self, Fore.RED, Fore.RESET))
+            exit()
+
     def recv_item(self, item):
         print('%s get %s' % (self, item))
         self.bag.append(item)
