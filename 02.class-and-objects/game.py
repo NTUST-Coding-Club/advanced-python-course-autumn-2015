@@ -1,12 +1,41 @@
 import random
 import RPG
+from colorama import Fore
+
+
+def hp_bar(hp_now, hp_max):
+    print('HP = %d' % hp_now)
+
+def show_status(who):
+    print('%s' % who)
+    hp_bar(who.hp, 0)
 
 def battle(player):
-    monster_list = [ RPG.Pig, RPG.Cow ]
+    monster_list = [ RPG.Pig, RPG.Cow, RPG.SlanderMan ]
     monster_type = random.choice(monster_list)
     monster = monster_type()
-    while monster.hp > 0:
-        player.attack(monster)
+
+    while True:
+        show_status(player)
+        show_status(monster)
+        print('''
+0) 逃跑
+1) 喝藥水
+2) 攻擊
+''')
+        act_number = input('要做什麼呢？')
+        try: act_number = int(act_number)
+        except ValueError: continue
+
+        if act_number == 0:
+            print('%s %s逃跑了%s' % (player, Fore.YELLOW, Fore.RESET))
+            return
+        elif act_number == 2:
+            player.attack(monster)
+
+        if monster.hp <= 0:
+            print('%s 戰勝了' % player)
+            return
 
 def inspect_bag(player):
     for item in player.bag:

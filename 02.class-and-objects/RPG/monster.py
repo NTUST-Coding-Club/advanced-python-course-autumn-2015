@@ -12,16 +12,17 @@ class Monster(object):
             self.fight_back(from_)
 
     def fight_back(self, target):
-        target.be_attacked(self)
+        if self.hp > 0:
+            target.be_attacked(self)
 
     def __str__(self):
-        return Fore.RED + 'Monster %s' % self.name + Fore.RESET
+        return Fore.RED + '%s' % self.name + Fore.RESET
 
 class Pig(Monster):
     def __init__(self):
         super().__init__('Pig')
         self.hp = 3
-        self.power = 1
+        self.power = 4
 
     def be_attacked(self, from_):
         super().be_attacked(from_)
@@ -33,7 +34,7 @@ class Cow(Monster):
     def __init__(self):
         super().__init__('Cow')
         self.hp = 6
-        self.power = 2
+        self.power = 15
 
     def be_attacked(self, from_):
         super().be_attacked(from_)
@@ -42,3 +43,13 @@ class Cow(Monster):
                 from_.recv_item(Fore.YELLOW + '神裝 (+9999)' + Fore.RESET)
             if randint(1, 3) == 1:
                 from_.recv_item(Fore.BLUE + '生牛排' + Fore.RESET)
+
+class SlanderMan(Monster):
+    def __init__(self):
+        super().__init__('SlanderMan')
+        self.hp = 99999999
+        self.power = 30
+
+    def be_attacked(self, from_):
+        print('%s 擋下了一切的攻擊' % self)
+        self.fight_back(from_)
