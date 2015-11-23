@@ -4,6 +4,7 @@ class Player(object):
     def __init__(self, name):
         self.name = name
         self.hp = 100
+        self.max_hp = 100
         self.mp = 100
         self.power = 4
         self.bag = []

@@ -4,14 +4,35 @@ from colorama import Fore
 
 
 def hp_bar(hp_now, hp_max):
-    print('HP = %d' % hp_now)
+    BAR_SIZE = 20
+    """ [=====        ] (44% 44/100) """
+    percentage = hp_now * 100 // hp_max
+
+    color = Fore.GREEN
+    if percentage < 70:
+        color = Fore.YELLOW
+    if percentage < 50:
+        color = Fore.MAGENTA
+    if percentage < 10:
+        color = Fore.RED
+
+    block_count = int(percentage / (100 / BAR_SIZE))
+    bar = '%s[%s]%s' % (color, ("=" * block_count).ljust(BAR_SIZE), Fore.RESET)
+    bar += " (%d%% %d/%d)" % (percentage, hp_now, hp_max)
+    print(bar)
+
+# hp_bar(9, 100)
+# hp_bar(33, 100)
+# hp_bar(66, 100)
+# hp_bar(99, 100)
+# exit()
 
 def show_status(who):
     print('%s' % who)
-    hp_bar(who.hp, 0)
+    hp_bar(who.hp, who.max_hp)
 
 def battle(player):
-    monster_list = [ RPG.Pig, RPG.Cow, RPG.SlanderMan ]
+    monster_list = [ RPG.Pig, RPG.Cow, RPG.Cow, RPG.Cow, RPG.Cow ] #, RPG.SlanderMan ]
     monster_type = random.choice(monster_list)
     monster = monster_type()
 

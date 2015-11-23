@@ -22,6 +22,7 @@ class Pig(Monster):
     def __init__(self):
         super().__init__('Pig')
         self.hp = 3
+        self.max_hp = 3
         self.power = 4
 
     def be_attacked(self, from_):
@@ -34,6 +35,7 @@ class Cow(Monster):
     def __init__(self):
         super().__init__('Cow')
         self.hp = 6
+        self.max_hp = 6
         self.power = 15
 
     def be_attacked(self, from_):
@@ -48,6 +50,7 @@ class SlanderMan(Monster):
     def __init__(self):
         super().__init__('SlanderMan')
         self.hp = 99999999
+        self.max_hp = 99999999
         self.power = 30
 
     def be_attacked(self, from_):
