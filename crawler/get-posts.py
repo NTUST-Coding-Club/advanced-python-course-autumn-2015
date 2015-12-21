@@ -4,6 +4,10 @@ import bs4
 ret = requests.get('http://inndy.me:8090').text
 document = bs4.BeautifulSoup(ret, 'html5lib')
 
+forms = document.select('form')  # css selector
+form = forms[0]
+print('Method: %s' % form['method'])
+
 for post in document.select('div.post'):  # '.post'
     # print(post.text.split(maxsplit=3))
     for field in post.select('span.field'):  # 'span' or '.field'
